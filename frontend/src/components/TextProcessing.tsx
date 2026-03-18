@@ -23,7 +23,7 @@ const TextProcessing = () => {
       <div className="card-body">
         <div className="card-header">
           <h3 className="card-title">Text Processing</h3>
-          <p className="card-subtitle">
+          <p className="card-subtitle mb-3">
             Paste a message and see how your rules apply.
           </p>
         </div>
@@ -45,10 +45,10 @@ const TextProcessing = () => {
         Process Text
       </button>
 
-      <h4 className="mt-5 font-semibold text-slate-100">Processed Output</h4>
+      <h4 className="mt-5 font-semibold text-slate-900 dark:text-slate-100">Processed Output</h4>
 
       {/* Render processed text grouped into sentences */}
-      <div className="mt-2 min-h-[96px] rounded-xl border border-slate-800 bg-slate-950/30 p-3 text-sm leading-relaxed text-slate-100 break-words">
+      <div className="mt-2 min-h-[96px] rounded-xl border border-slate-200 bg-white p-3 text-sm leading-relaxed text-slate-900 break-words dark:border-slate-800 dark:bg-slate-950/30 dark:text-slate-100">
         {(() => {
           // Array of rendered sentence elements
           const sentences: JSX.Element[] = [];
@@ -56,7 +56,7 @@ const TextProcessing = () => {
 
           if (result.length === 0) {
             return (
-              <p className="text-xs text-slate-400">
+              <p className="text-xs text-slate-500 dark:text-slate-400">
                 Nothing to show yet — run “Process Text” to preview.
               </p>
             );

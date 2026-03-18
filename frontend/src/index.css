@@ -4,18 +4,18 @@
 
 @layer base {
 	body {
-		@apply bg-slate-950 text-slate-100 antialiased;
+		@apply bg-slate-50 text-slate-900 antialiased dark:bg-slate-950 dark:text-slate-100;
 	}
 }
 
 @layer components {
 	.required::after {
 		content: " *";
-		@apply text-rose-400;
+		@apply text-rose-500 dark:text-rose-400;
 	}
 
 	.card {
-		@apply rounded-2xl bg-slate-900/60 ring-1 ring-slate-800 shadow-sm backdrop-blur;
+		@apply rounded-2xl bg-white ring-1 ring-slate-200 shadow-sm backdrop-blur dark:bg-slate-900/60 dark:ring-slate-800 dark:shadow-none;
 	}
 
 	.card-body {
@@ -27,11 +27,11 @@
 	}
 
 	.card-title {
-		@apply text-lg sm:text-xl font-semibold tracking-tight text-slate-50;
+		@apply text-lg sm:text-xl font-semibold tracking-tight text-slate-900 dark:text-slate-50;
 	}
 
 	.card-subtitle {
-		@apply text-sm text-slate-300;
+		@apply text-sm text-slate-600 dark:text-slate-300;
 	}
 
 	.btn {
@@ -39,11 +39,11 @@
 	}
 
 	.btn-primary {
-		@apply bg-indigo-500 text-white hover:bg-indigo-400;
+		@apply bg-indigo-600 text-white hover:bg-indigo-500 dark:bg-indigo-500 dark:hover:bg-indigo-400;
 	}
 
 	.btn-secondary {
-		@apply border border-slate-700 bg-slate-900/40 text-slate-100 hover:bg-slate-900/70;
+		@apply border border-slate-200 bg-white text-slate-800 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900/40 dark:text-slate-100 dark:hover:bg-slate-900/70;
 	}
 
 	.btn-danger {
@@ -53,7 +53,7 @@
 	.input,
 	.select,
 	.textarea {
-		@apply w-full rounded-xl border border-slate-700 bg-slate-950/40 px-3 py-2 text-sm text-slate-100 outline-none transition placeholder:text-slate-500 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20;
+		@apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none transition placeholder:text-slate-400 focus:border-indigo-400 focus:ring-2 focus:ring-indigo-500/20 dark:border-slate-700 dark:bg-slate-950/40 dark:text-slate-100 dark:placeholder:text-slate-500;
 	}
 
 	.textarea {
@@ -69,7 +69,7 @@
 	}
 
 	.table-shell {
-		@apply overflow-hidden rounded-xl border border-slate-800 bg-slate-950/20;
+		@apply overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950/20;
 	}
 
 	.table {
@@ -77,11 +77,11 @@
 	}
 
 	.th {
-		@apply sticky top-0 bg-slate-900/70 backdrop-blur border-y border-slate-800 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-300;
+		@apply sticky top-0 bg-slate-100 backdrop-blur border-y border-slate-200 px-3 py-2 text-left text-xs font-semibold uppercase tracking-wide text-slate-600 dark:bg-slate-900/70 dark:border-slate-800 dark:text-slate-300;
 	}
 
 	.td {
-		@apply px-3 py-2 align-middle text-slate-100;
+		@apply px-3 py-2 align-middle text-slate-800 dark:text-slate-100;
 	}
 
 	.badge {
@@ -89,6 +89,6 @@
 	}
 
 	.badge-warn {
-		@apply bg-amber-500/10 text-amber-200 ring-amber-500/20;
+		@apply bg-amber-100 text-amber-800 ring-amber-300 dark:bg-amber-500/10 dark:text-amber-200 dark:ring-amber-500/20;
 	}
 }
