@@ -7,7 +7,7 @@ import DarkMode from "./assets/icons/darkmood.svg";
 function App() {
   const [dark, setDark] = useState(true);
 
-  // load theme
+  // init theme
   useEffect(() => {
     const saved = localStorage.getItem("theme");
 
@@ -21,7 +21,7 @@ function App() {
     }
   }, []);
 
-  // save theme
+  // persist theme
   useEffect(() => {
     localStorage.setItem("theme", dark ? "dark" : "light");
   }, [dark]);

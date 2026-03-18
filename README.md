@@ -1,4 +1,4 @@
-## Rule-Based Content Filter
+## 
 
 This project is a Rule-Based Content Filter application built with **React (Vite + TypeScript)** and **Node.js (Express)**.
 
@@ -94,6 +94,8 @@ rulebased-content-filter/
 ├── frontend/
 │   ├── src/
 │   │   ├── api/
+│   ├──     assets/
+│   │   └──    icons/  
 │   ├── assets/
 │   │   └── icons/
 │   │   ├── components/

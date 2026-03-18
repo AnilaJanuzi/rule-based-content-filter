@@ -2,6 +2,7 @@ const sqlite3 = require('sqlite3').verbose();
 
 const db = new sqlite3.Database('./rules.db');
 
+// Initialize database and perform migrations
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS rules (
@@ -16,6 +17,7 @@ db.serialize(() => {
     )
   `);
 
+  //check schema 
   db.all("PRAGMA table_info(rules)", [], (err, columns) => {
     if (err) {
       console.error("Failed to read rules schema:", err);
@@ -25,20 +27,19 @@ db.serialize(() => {
     const hasIsActive = columns.some(c => c.name === "isActive");
     const hasPriority = columns.some(c => c.name === "priority");
 
+    // Add missing columns if needed
     if (!hasIsActive) {
       db.run("ALTER TABLE rules ADD COLUMN isActive INTEGER DEFAULT 1", (alterErr) => {
         if (alterErr) {
           console.error("Migration failed:", alterErr);
           return;
         }
-
-        console.log("Added isActive column");
-
-        //  FIX 
+        
         db.run("UPDATE rules SET isActive = 1 WHERE isActive IS NULL");
       });
     }
 
+    // Add priority column if missing
     if (!hasPriority) {
       db.run("ALTER TABLE rules ADD COLUMN priority INTEGER DEFAULT 0", (alterErr) => {
         if (alterErr) {
@@ -46,7 +47,6 @@ db.serialize(() => {
           return;
         }
 
-        console.log("Added priority column");
         db.run("UPDATE rules SET priority = 0 WHERE priority IS NULL");
       });
     }
