@@ -1,4 +1,4 @@
-## Overview
+## Rule-Based Content Filter
 
 This project is a Rule-Based Content Filter application built with **React (Vite + TypeScript)** and **Node.js (Express)**.
 
