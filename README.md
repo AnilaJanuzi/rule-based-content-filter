@@ -1,9 +1,8 @@
-#  Rule Based Content Filter
-
 ## Overview
 
 This project is a Rule-Based Content Filter application built with **React (Vite + TypeScript)** and **Node.js (Express)**.
-The app allows users to create rules and process text dynamically by applying highlights or tooltips based on defined conditions.
+
+The app allows users to create dynamic rules and process text by applying highlights or tooltips based on defined conditions. It also includes advanced features like **rule priority handling** and **dark/light mode UI**.
 
 ---
 
@@ -13,13 +12,56 @@ The app allows users to create rules and process text dynamically by applying hi
 * Highlight specific words in text
 * Add tooltips to matched words
 * Different match types:
-
   * contains
   * startsWith
   * exact
 * Real-time text processing
+*  Dark Mode / Light Mode toggle
+*  Rule Priority system (higher priority overrides lower ones)
 
 ---
+
+## Advanced Functionality
+
+### Rule Priority
+
+Each rule has a **priority value**.
+
+* Higher number = higher priority
+* When multiple rules match the same keyword:
+  * The rule with the **highest priority is applied**
+  
+Example:
+
+| Keyword | Color | Priority |
+|--------|------|---------|
+| test   | red  | 10      |
+| test   | blue | 1       |
+
+➡ Result: `test` will be **red**
+
+---
+
+### Smart Rule Handling
+
+* Supports multiple rules for the same keyword
+* Ensures consistent output using priority logic
+* Prevents conflicts between overlapping rules
+
+---
+
+### Dark / Light Mode
+
+The application supports both themes:
+
+*  Dark Mode (default modern UI)
+*  Light Mode (original clean layout)
+
+Features:
+* Smooth toggle between modes
+* UI colors adapt automatically
+* Rule highlight colors remain unchanged for consistency
+
 
 ## Tech Stack
 
