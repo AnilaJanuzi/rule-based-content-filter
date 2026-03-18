@@ -48,6 +48,13 @@ const RuleRow = ({ rule, onToggleActive, onDelete, onEdit }: RuleRowProps) => {
       >
         {rule.actionType}
       </td>
+      <td
+        className={`td font-semibold ${
+          inactive ? "text-slate-500 dark:text-slate-500" : "text-slate-700 dark:text-slate-100"
+        }`}
+      >
+        {rule.priority ?? 0}
+      </td>
       <td className="td">
         {rule.actionType === "highlight" ? (
           <span

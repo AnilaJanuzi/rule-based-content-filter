@@ -61,17 +61,17 @@
 	}
 
 	.table-wrap {
-		@apply -mx-4 sm:-mx-6 lg:mx-0 overflow-x-auto lg:overflow-visible;
-	}
+	@apply -mx-4 sm:-mx-6 lg:mx-0 overflow-x-auto;
+}
 
 	.table-inner {
 		@apply px-4 sm:px-6 lg:px-0;
 	}
 
+	
 	.table-shell {
-		@apply overflow-hidden rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950/20;
-	}
-
+	@apply rounded-xl border border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-950/20;
+}
 	.table {
 		@apply w-full text-sm;
 	}
