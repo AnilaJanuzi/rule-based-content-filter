@@ -71,8 +71,8 @@ rulebased-content-filter/
 ###  1. Clone the repository
 
 ```
-git clone https://github.com/AnilaJanuzi/rulebased-content-filter.git
-cd rulebased-content-filter
+git clone https://github.com/AnilaJanuzi/rule-based-content-filter.git
+cd rule-based-content-filter
 ```
 
 ---
