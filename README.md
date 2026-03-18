@@ -38,7 +38,7 @@ Example:
 | test   | red  | 10      |
 | test   | blue | 1       |
 
-➡ Result: `test` will be **red**
+Result: `test` will be **red**
 
 ---
 
@@ -96,6 +96,8 @@ rulebased-content-filter/
 │   │   ├── api/
 │   ├──     assets/
 │   │   └──    icons/  
+│   ├── assets/
+│   │   └── icons/
 │   │   ├── components/
 │   │   ├── types/
 │   │   │   └── rule.ts
