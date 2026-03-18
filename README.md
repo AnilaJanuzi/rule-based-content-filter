@@ -96,8 +96,6 @@ rulebased-content-filter/
 │   │   ├── api/
 │   ├──     assets/
 │   │   └──    icons/  
-│   ├── assets/
-│   │   └── icons/
 │   │   ├── components/
 │   │   ├── types/
 │   │   │   └── rule.ts
