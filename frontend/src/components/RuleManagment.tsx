@@ -36,11 +36,16 @@ const RuleManagement = () => {
   const saveRule = async () => {
     if (!form.keyword.trim()) return;
 
+    const normalizedPriority = Number.isFinite(Number(form.priority))
+      ? Number(form.priority)
+      : 0;
+    const payload = { ...form, priority: normalizedPriority };
+
     if (editingRuleId == null) {
       // POST request to create new rule
-      await API.post("/rules", form);
+      await API.post("/rules", payload);
     } else {
-      await API.put(`/rules/${editingRuleId}`, form);
+      await API.put(`/rules/${editingRuleId}`, payload);
       setShowEditSuccess(true);
     }
 

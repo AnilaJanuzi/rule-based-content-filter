@@ -10,12 +10,27 @@ interface RuleFormProps {
 // Functional component for creating/updating a rule
 const RuleForm = ({ form, setForm, onSave, mode }: RuleFormProps) => {
   const isKeywordEmpty = !form.keyword.trim();
+  const priorityValue = Number.isFinite(form.priority)
+    ? Number(form.priority)
+    : 0;
+
+    // Helper function to update priority with validation
+  const updatePriority = (value: number) => {
+    const normalized = Number.isFinite(value) ? Math.max(0, Math.floor(value)) : 0;
+    setForm({ ...form, priority: normalized });
+  };
+
+  const stepPriority = (delta: number) => {
+    updatePriority(priorityValue + delta);
+  };
 
   return (
     <div className="space-y-4">
       {/* INPUT: Keyword */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-        <label className="sm:w-28 text-sm font-medium text-gray-700 required">Keyword</label>
+        <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+          Keyword
+        </label>
 
         <input
           className="input sm:flex-1"
@@ -26,11 +41,15 @@ const RuleForm = ({ form, setForm, onSave, mode }: RuleFormProps) => {
 
       {/* SELECT: Match Type */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-        <label className="sm:w-28 text-sm font-medium text-gray-700">Match Type</label>
+        <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+          Match Type
+        </label>
         <select
           className="select sm:flex-1"
           value={form.matchType}
-          onChange={(e) => setForm({ ...form, matchType: e.target.value as MatchType })}
+          onChange={(e) =>
+            setForm({ ...form, matchType: e.target.value as MatchType })
+          }
         >
           <option value="contains">Contains</option>
           <option value="startsWith">Starts With</option>
@@ -40,21 +59,62 @@ const RuleForm = ({ form, setForm, onSave, mode }: RuleFormProps) => {
 
       {/* SELECT: Action Type */}
       <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-        <label className="sm:w-28 text-sm font-medium text-gray-700">Action</label>
+        <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+          Action
+        </label>
         <select
           className="select sm:flex-1"
           value={form.actionType}
-          onChange={(e) => setForm({ ...form, actionType: e.target.value as ActionType })}
+          onChange={(e) =>
+            setForm({ ...form, actionType: e.target.value as ActionType })
+          }
         >
           <option value="highlight">Highlight</option>
           <option value="tooltip">Tooltip</option>
         </select>
       </div>
 
+      {/* INPUT: Priority */}
+      <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+        <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+          Priority
+        </label>
+        <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="btn btn-secondary !px-3 !py-2"
+            onClick={() => stepPriority(-1)}
+            aria-label="Decrease priority"
+            disabled={priorityValue <= 0}
+          >
+            –
+          </button>
+          <input
+            type="number"
+            min={0}
+            inputMode="numeric"
+            placeholder="e.g. 10 = high"
+            className="input w-32 text-center"
+            value={priorityValue}
+            onChange={(e) => updatePriority(Number(e.target.value))}
+          />
+          <button
+            type="button"
+            className="btn btn-secondary !px-3 !py-2"
+            onClick={() => stepPriority(1)}
+            aria-label="Increase priority"
+          >
+            +
+          </button>
+        </div>
+      </div>
+
       {/* CONDITIONAL INPUTS based on action type */}
       {form.actionType === "highlight" && (
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-          <label className="sm:w-28 text-sm font-medium text-gray-700">Color</label>
+          <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+            Color
+          </label>
 
           <div className="flex items-center gap-3">
             {/* Preview circle */}
@@ -79,7 +139,9 @@ const RuleForm = ({ form, setForm, onSave, mode }: RuleFormProps) => {
       {/* Input for tooltip label */}
       {form.actionType === "tooltip" && (
         <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
-          <label className="sm:w-28 text-sm font-medium text-gray-700">Label</label>
+          <label className="sm:w-28 text-sm font-medium text-gray-700 dark:text-slate-300">
+            Label
+          </label>
           <input
             className="input sm:flex-1"
             value={form.label ?? ""}

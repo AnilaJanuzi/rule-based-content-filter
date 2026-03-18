@@ -12,7 +12,7 @@ interface RuleTableProps {
 const RuleTable = ({ rules, onToggleActive, onDelete, onEdit }: RuleTableProps) => {
   return (
     <div className="table-wrap mb-4">
-      <div className="table-inner min-w-[720px] lg:min-w-0">
+      <div className="table-inner min-w-[900px] ">
         <div className="table-shell">
           <table className="table">
           <thead>
@@ -28,6 +28,9 @@ const RuleTable = ({ rules, onToggleActive, onDelete, onEdit }: RuleTableProps) 
               </th>
               <th className="th">
                 Action
+              </th>
+              <th className="th">
+                Priority
               </th>
               <th className="th">
                 Color/Tag
