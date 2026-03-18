@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../database/db');
 
-
+// normalize priority value
 const normalizePriority = (value) => {
   if (value === undefined || value === null || value === "") return 0;
   const parsed = Number(value);
@@ -10,6 +10,7 @@ const normalizePriority = (value) => {
   return Math.trunc(parsed);
 };
 
+//get all rules
 router.get('/', (req, res) => {
   db.all("SELECT * FROM rules ORDER BY priority DESC, id DESC", [], (err, rows) => {
     if (err) return res.status(500).json({ message: 'Failed to fetch rules', error: err.message });
@@ -18,6 +19,7 @@ router.get('/', (req, res) => {
 });
 
 
+// Create a  rule
 router.post('/', (req, res) => {
   const { keyword, matchType, actionType, color, label, isActive, priority: rawPriority } = req.body;
 
@@ -107,6 +109,7 @@ router.patch('/:id/toggle', (req, res) => {
 });
 
 
+// process text with rules
 router.post('/process-text', (req, res) => {
   const { text } = req.body;
 
