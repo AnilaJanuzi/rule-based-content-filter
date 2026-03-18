@@ -148,8 +148,8 @@ const RuleManagement = () => {
           />
           <div className="relative card w-full max-w-sm">
             <div className="card-body">
-            <h4 className="text-lg font-semibold text-slate-50">Updated</h4>
-            <p className="text-sm text-slate-300 mt-1">
+            <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Updated</h4>
+            <p className="text-sm text-slate-600 mt-1 dark:text-slate-300">
               Rule updated successfully.
             </p>
 
@@ -173,8 +173,8 @@ const RuleManagement = () => {
           <div className="absolute inset-0 bg-black/40" onClick={cancelDelete} />
           <div className="relative card w-full max-w-sm">
             <div className="card-body">
-            <h4 className="text-lg font-semibold text-slate-50">Delete rule?</h4>
-            <p className="text-sm text-slate-300 mt-1">
+            <h4 className="text-lg font-semibold text-slate-900 dark:text-slate-50">Delete rule?</h4>
+            <p className="text-sm text-slate-600 mt-1 dark:text-slate-300">
               Are you sure you want to delete it?
             </p>
 
